@@ -1,1 +1,1 @@
-Building a dashboard for managing jobs in a furniture company.
+Building a dashboard for managing jobs in a furniture company
