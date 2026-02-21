@@ -83,6 +83,7 @@ export default function Calculator() {
   }, []);
 
   async function handleCalculate() {
+    document.activeElement?.blur(); // dismiss keyboard and zoom back out on mobile
     if (!destination) {
       setError('Please enter a delivery address.');
       return;
@@ -143,7 +144,7 @@ export default function Calculator() {
         <h1 className="text-xl font-semibold text-gray-800">Delivery Calculator</h1>
         <button
           onClick={() => navigate('/settings')}
-          className="text-sm text-gray-500 hover:text-gray-700"
+          className="text-sm font-medium text-gray-600 border border-gray-300 rounded-lg px-3 py-1.5 hover:bg-gray-50 active:bg-gray-100 transition-colors"
         >
           Settings
         </button>
