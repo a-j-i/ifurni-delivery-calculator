@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^5.0.3",
+    "@mapbox/search-js-core": "^1.2.0",
+    "@mapbox/search-js-react": "^1.2.0",
     "@tailwindcss/vite": "^4.1.5",
+    "firebase": "^12.9.0",
     "mapbox-gl": "^3.12.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
