@@ -45,9 +45,10 @@ export default function Calculator() {
 
   const [warehouses, setWarehouses]   = useState(loadWarehouses);
   const [warehouse, setWarehouse]     = useState(() => loadWarehouses()[0]);
-  const [destination, setDestination] = useState(null);
-  const [searchKey, setSearchKey]     = useState(0);
-  const [result, setResult]           = useState(null);
+  const [destination, setDestination]       = useState(null);
+  const [addressText, setAddressText]       = useState('');
+  const [searchKey, setSearchKey]           = useState(0);
+  const [result, setResult]                 = useState(null);
   const [loading, setLoading]         = useState(false);
   const [error, setError]             = useState(null);
 
@@ -131,6 +132,7 @@ export default function Calculator() {
 
   function handleClear() {
     setDestination(null);
+    setAddressText('');
     setResult(null);
     setError(null);
     setSearchKey(k => k + 1);
@@ -176,10 +178,14 @@ export default function Calculator() {
           <SearchBox
             key={searchKey}
             accessToken={MAPBOX_TOKEN}
+            value={addressText}
+            onChange={v => setAddressText(v)}
             onRetrieve={res => {
               const feature = res.features[0];
               const [lng, lat] = feature.geometry.coordinates;
+              const full = feature.properties.full_address ?? feature.properties.place_name ?? '';
               setDestination({ lat, lng });
+              setAddressText(full);
               setResult(null);
               setError(null);
             }}
